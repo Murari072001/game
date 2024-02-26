@@ -3,7 +3,6 @@ import HomePage from './features/HomePage';
 
 
 function App() {
-  
   return (
     <div className='home'>
       <HomePage></HomePage>
