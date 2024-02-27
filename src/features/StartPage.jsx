@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { gameStart } from "./gameSlice";
-
+import Snake2 from "./Snake2.jpg"
 function StartPage()
 {
     const game=useSelector(state=>state.game)
@@ -13,9 +13,11 @@ function StartPage()
       navigate("/game")
     }
     return (
-        <div className="home">
-            <h1>{game.mode.toUpperCase()} Mode</h1>
-          <button className='btn btn-outline-danger' onClick={()=>{startGame()}}>Let's Start</button>
+        <div style={{backgroundImage:`url(${Snake2})`,backgroundSize:"100%"}} className="home">
+            <div className="card">
+            <h1 className="title">{game.mode?.toUpperCase()} Mode</h1>
+            <button className='btn btn-outline-dark' onClick={()=>{startGame()}}>Let's Start</button>
+            </div>
         </div>
     )
 }

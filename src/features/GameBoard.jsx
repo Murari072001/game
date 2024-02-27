@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ateFood, setFood, gameOn, setdirection, gameStart } from './gameSlice'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
+import Snake3 from "./Snake3.jpg"
 function GameBoard() {
 
   const cells = []
@@ -65,9 +66,10 @@ function GameBoard() {
   }
   return (
     <>
-      <div className="App">
+      <div className="App" style={{backgroundImage:`url(${Snake3})`,backgroundSize:"100%"}}>
         <div className='w-100 text-center'>
-        <div className='d-flex flex-wrap p-0 ms-auto me-auto m-5 position-relative' style={{ width: game.blocksize * game.column, height: game.blocksize * game.rows }} id='board'>
+        <h1 className='m-2 ms-auto me-auto p-3 title score'>{game.mode?.toUpperCase()} MODE</h1>
+        <div className='d-flex flex-wrap p-0 ms-auto me-auto  position-relative' style={{ width: game.blocksize * game.column, height: game.blocksize * game.rows }} id='board'>
           {cells.map((cell) => {
             return (
               <div className={`${(game.snake.find((ele) => ele.x === cell.x && ele.y === cell.y)) ? ((game.snake[0].x===cell.x&&game.snake[0].y===cell.y)?`snakehead ${game.snake[0].dir}`:"snakebody" ): (((game.food.x === cell.x) && (game.food.y === cell.y)) ? "food" : "cell")} m-0 p-0`} key={`${cell.x}-${cell.y}`} style={{ width: game.blocksize, height: game.blocksize }} ></div>
@@ -75,7 +77,7 @@ function GameBoard() {
           })}
 
         </div>
-        <h2 className='text-center'>Score:{game.score}</h2>
+        <h2 className='text-center ms-auto me-auto m-3 p-3 score'>Score:{game.score}</h2>
         </div>
         <div style={{display:game.gameOver?"flex":"none"}} id='finalscore'>
               <div>
