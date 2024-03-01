@@ -101,6 +101,7 @@ export const gameSlice = createSlice({
           break;
           default: return ele;
         }
+        return ele;
 
       })
     },

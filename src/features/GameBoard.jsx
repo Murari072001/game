@@ -16,15 +16,16 @@ function GameBoard() {
     }, game.speed)
 
     return () => clearInterval(startGame)
-  },[game.speed,game.gameOver,game.food])
-  const moveSnake = () => {
+  },[game.speed,game.gameOver,game.food]
+  )
+  
+  function moveSnake() {
     if (game.gameOver)
       return;
-    dispatch(gameOn())
-    dispatch(ateFood())
-    if(game.snake.find((ele)=>ele.x===game.food.x&&ele.y===game.food.y))
-    {
-      dispatch(setFood())
+    dispatch(gameOn());
+    dispatch(ateFood());
+    if (game.snake.find((ele) => ele.x === game.food.x && ele.y === game.food.y)) {
+      dispatch(setFood());
     }
   }
   
