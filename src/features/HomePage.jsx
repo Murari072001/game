@@ -14,7 +14,7 @@ function HomePage()
     return (
         <div style={{backgroundImage:`url(${Snake1})`,backgroundSize:"100%"}} className="home">
             <div className="card">
-            <h1 className="title">Welcome To NaaGin World</h1>
+            <h1 className="title">Welcome To Snake World</h1>
             <div className="text-center">
                 <button className="btn btn-outline-dark m-2 w-75" onClick={(e)=>{modeSet(e.target.value)}} value="classic">Classic Mode</button>
                 <button className="btn btn-outline-dark m-2 w-75" onClick={(e)=>{modeSet(e.target.value)}} value="strict">Strict Mode</button>
