@@ -28,6 +28,7 @@ export const gameSlice = createSlice({
         case 300: state.speed = 125
           break;
         case 400: state.speed = 100
+        break;
         default:
           break;
       }
@@ -61,7 +62,7 @@ export const gameSlice = createSlice({
             ele.x = state.rows-1
             return { x: ele.x, y: ele.y, dir: ele.dir, cross: ele.cross }
           }
-
+          break;
           case "down": if (ele.x <= state.rows-1) {
             return { x: ele.x++, y: ele.y, dir: ele.dir, cross: ele.cross }
           }
@@ -73,7 +74,7 @@ export const gameSlice = createSlice({
             ele.x = 0
             return { x: ele.x, y: ele.y, dir: ele.dir, cross: ele.cross }
           }
-
+          break;
           case "right": if (ele.y <= state.rows-1) {
             return { x: ele.x, y: ele.y++, dir: ele.dir, cross: ele.cross }
           }
@@ -85,6 +86,7 @@ export const gameSlice = createSlice({
             ele.y = 0
             return { x: ele.x, y: ele.y, dir: ele.dir, cross: ele.cross }
           }
+          break;
           case "left": if (ele.y >= 0) {
             return { x: ele.x, y: ele.y--, dir: ele.dir, cross: ele.cross }
           }
@@ -96,7 +98,8 @@ export const gameSlice = createSlice({
             ele.y = state.rows-1
             return { x: ele.x, y: ele.y, dir: ele.dir, cross: ele.cross }
           }
-          default: break;
+          break;
+          default: return ele;
         }
 
       })

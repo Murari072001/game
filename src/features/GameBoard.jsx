@@ -9,9 +9,9 @@ function GameBoard() {
   const game = useSelector(state => state.game)
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  var startGame;
+
   useEffect(() => {
-    startGame = setInterval(() => {
+    const startGame = setInterval(() => {
       moveSnake()
     }, game.speed)
 
