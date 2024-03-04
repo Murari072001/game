@@ -1,36 +1,38 @@
 import React from "react"
 function App() {
-  const [Computer,setComp]=React.useState("")
-  const [player,setPlay]=React.useState("")
-  const [result,setResult]=React.useState("")
-  const keys=["rock","paper","scissor"]
-  const evaluate=(e)=>{
-    let play=e.target.value
-    setPlay(e.target.value)
-    let comp=keys[Math.floor(Math.random()*keys.length)]
-    setComp(comp)
-    if(comp===e.target.value)
+    let [genNum,setGen]=React.useState(null)
+    let ref=React.useRef()
+    // console.log(genNum);
+    function generate(i)
     {
-      setResult("Draw")  
+      console.dir();
+      let count=0
+      let random=Math.round(Math.random()*9)
+      if(random===genNum)
+      {
+        random=Math.round(Math.random()*9)
+      }
+      const spin=setInterval(()=>{
+        ref.current.style.rotate=`${(180-(36*random))}deg`
+        console.log(count);
+        count+=1;
+        if(count===20)
+        {
+          clearInterval(spin)
+        }
+      },120)
+      setGen(random)
     }
-    else if((comp==="rock"&&play==="paper")||(comp==="paper"&&play==="scissor")||(comp==="scissor"&&play==="rock")){
-      setResult("You Won")
-    }
-    else{
-      setResult("You Lost")
-    }
-  }
   return (
-    <div className='board w-50 ms-auto me-auto text-center mt-5 rounded-5'>
-        <div className="m-3">
-            <h3>Player:{player.toUpperCase()}</h3>
-            <h3>Computer:{Computer.toUpperCase()}</h3>
-            <h3>Result:{result}</h3>
-        </div>
-        <div className="m-3">
-          <button onClick={(e)=>{evaluate(e)}} className="btn btn-outline-danger m-3" value="rock">Rock</button>
-          <button onClick={(e)=>{evaluate(e)}} className="btn btn-outline-danger m-3" value="paper">Paper</button>
-          <button onClick={(e)=>{evaluate(e)}} className="btn btn-outline-danger m-3" value="scissor">Scissor</button>
+    <div className='main positive-relative'>
+        <div className="board">
+          <div className="spin">
+            <img ref={ref} src="https://www.canassist.ca/assets/SpinnerOverlays/VarietySpinnerOverlaysJpg/0-9%20Overlay_Final.jpg" alt="" />
+          </div>
+          <h2 className="text-center"><i className="bi bi-arrow-up"></i></h2>
+          <button className="btn btn-primary" onClick={()=>{generate()}}>Generate Number</button>
+          <h3>Generated Number:{genNum}</h3>
+        <div className="triangle"></div>
         </div>
     </div>
   );
