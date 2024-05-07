@@ -32,7 +32,6 @@ function App() {
         <h2 className="text-center"><i className="bi bi-arrow-up"></i></h2>
         <button id="btn" className="btn btn-primary" onClick={() => { generate() }}>Generate Number</button>
         <h3>Generated Number:{genNum}</h3>
-        {/* <div className="triangle"></div> */}
       </div>
     </div>
   );
