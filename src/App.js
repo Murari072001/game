@@ -1,9 +1,13 @@
+import { Outlet } from 'react-router-dom';
 import './App.css';
+import Registration from './features/Registration';
+import Navbar from './shared/Navbar';
 
 function App() {
   return (
     <div className="App">
-      Game On
+      <Navbar></Navbar>
+      <Outlet></Outlet>
     </div>
   );
 }
