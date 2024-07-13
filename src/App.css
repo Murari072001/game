@@ -1,0 +1,10 @@
+.dice{
+    width: 100px;
+    height: 100px;
+    background-size: contain;
+    background-color: red;
+    display: none;
+}
+#one{
+    display: block;
+}
